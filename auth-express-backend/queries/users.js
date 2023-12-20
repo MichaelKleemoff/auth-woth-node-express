@@ -15,7 +15,18 @@ const getOneUser = async (id) => {
 	}
 };
 
-const getOneUserByEmail = async ({ email }) => {};
+const getOneUserByEmail = async ({ email }) => {
+	try {
+		const oneUserByEmail = await db.oneOrNone(
+			'SELECT * FROM users WHERE email=$1',
+			email
+		);
+		return oneUserByEmail;
+	} catch (err) {
+		return err;
+	}
+};
+
 const createUser = async (user) => {};
 
 module.exports = {
