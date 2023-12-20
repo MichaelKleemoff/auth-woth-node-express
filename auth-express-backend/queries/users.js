@@ -27,7 +27,19 @@ const getOneUserByEmail = async ({ email }) => {
 	}
 };
 
-const createUser = async (user) => {};
+const createUser = async (user) => {
+	const { username, email, password_hash } = user;
+
+	try {
+		const createdUser = await db.one(
+			'INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING *',
+			[username, email, password_hash]
+		);
+		return createdUser;
+	} catch (err) {
+		return err;
+	}
+};
 
 module.exports = {
 	getOneUser,
