@@ -6,8 +6,10 @@ const {
 	getOneUserByEmail,
 	createUser,
 } = require('../queries/users.js');
+
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
+const { checkUsername, checkEmail } = require('../validations/checkUser.js');
 const users = express.Router();
 
 // LOGIN ROUTE
