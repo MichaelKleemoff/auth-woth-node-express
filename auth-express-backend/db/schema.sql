@@ -7,7 +7,6 @@ CREATE DATABASE auth_dev;
 
 \c auth_dev;
 
--- users table
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL,
@@ -16,7 +15,6 @@ CREATE TABLE users (
   registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- resources table
 CREATE TABLE resources (
   resource_id SERIAL PRIMARY KEY,
   user_id INT,
